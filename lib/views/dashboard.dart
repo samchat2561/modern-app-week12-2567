@@ -1,3 +1,4 @@
+import 'package:blog_moble/views/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,14 +12,24 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  late SharedPreferences prefs;
+  // late SharedPreferences prefs;
+  late SharedPreferences logout;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Map<String,dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
+    Map<String, dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
     print('token:${widget.token}');
+  }
+
+  void logOut() async {
+    logout = await SharedPreferences.getInstance();
+    logout.clear();
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => LoginScreens()),
+      (route) => false,
+    );
   }
 
   @override
@@ -36,7 +47,18 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       body: Center(
-        child: Text('MyApp'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('MyApp'),
+            IconButton(
+              onPressed: () {
+                logOut();
+              },
+              icon: Icon(Icons.logout),
+            ),
+          ],
+        ),
       ),
     );
   }
