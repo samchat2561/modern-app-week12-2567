@@ -93,6 +93,11 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
+          Positioned(
+            top: 160,
+            left: 18,
+            child: Image.asset('assets/images/hacker.png', scale: 3.8),
+          ),
         ],
       ),
     );
