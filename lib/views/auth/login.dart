@@ -54,7 +54,13 @@ class _LoginScreensState extends State<LoginScreens> {
 
       if (data['message'] == 'success') {
         final myToken = data['token'];
+        final username = data['username'];
+        final email = data['email'];
+
         prefs.setString('token', myToken);
+        prefs.setString('username', username);
+        prefs.setString('email', email);
+
         print(myToken);
 
         await Future.delayed(Duration(seconds: 3));
@@ -63,8 +69,8 @@ class _LoginScreensState extends State<LoginScreens> {
           MaterialPageRoute(
             builder: (context) => Dashboard(
               token:myToken,
-              // email: data['email'],
-              // username: data['username'],
+              username: username,
+              email: email,
               // token: data['token'],
             ),
           ),

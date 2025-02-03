@@ -5,15 +5,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   final String token;
-  const Dashboard({super.key, required this.token});
+  final String username;
+  final String email;
+  const Dashboard({super.key, required this.token, required this.username, required this.email});
 
   @override
   State<Dashboard> createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-  // late SharedPreferences prefs;
+  late SharedPreferences prefs;
   late SharedPreferences logout;
+  late String email;
+  late String username;
 
   @override
   void initState() {
@@ -21,6 +25,8 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
     Map<String, dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
     print('token:${widget.token}');
+    print('token:${widget.email}');
+    print('token:${widget.username}');
   }
 
   void logOut() async {
@@ -102,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
             top: 180,
             left: 150,
             child: Text(
-              'Name:',
+              'Username:${widget.username}',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -110,7 +116,7 @@ class _DashboardState extends State<Dashboard> {
             top: 200,
             left: 150,
             child: Text(
-              'Email:',
+              'Email:${widget.email}',
               style: TextStyle(color: Colors.white),
             ),
           ),
