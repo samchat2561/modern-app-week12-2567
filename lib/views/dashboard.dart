@@ -35,30 +35,46 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-        centerTitle: true,
-        title: Text(
-          "Dashboard:",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
+      body: Stack(
+        children: [
+          Container(
+            color: Color(0xffe0e0e0),
           ),
-        ),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('MyApp'),
-            IconButton(
-              onPressed: () {
-                logOut();
-              },
-              icon: Icon(Icons.logout),
+          Container(
+            height: 250,
+            decoration: BoxDecoration(
+              color: Colors.purple,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(60.0),
+                bottomRight: Radius.circular(60.0),
+              ),
             ),
-          ],
-        ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 32, left: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: IconButton(
+                          onPressed: () {
+                            logOut();
+                          },
+                          icon: Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
