@@ -71,6 +71,25 @@ class _DashboardState extends State<Dashboard> {
                     ],
                   ),
                 ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 60.0),
+                      child: Icon(
+                        Icons.home,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        'Welcome Back',
+                        style: TextStyle(color: Colors.white, fontSize: 28),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
